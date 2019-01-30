@@ -35,7 +35,7 @@ class Check {
         $proxy = null;
 
         $curl = new Curl();
-        $curl->setTimeout(10);
+        $curl->setTimeout(15);
         $curl->add($this->url, $this->cookie, null, $proxy);
         $res = $curl->run();
 
@@ -46,7 +46,7 @@ class Check {
             $cookies = Util::getCookies($headers);
 
             $curl = new Curl();
-            $curl->setTimeout(10);
+            $curl->setTimeout(15);
             $curl->add($ur, $cookies, null, $proxy);
             $res1 = $curl->run();
 
@@ -56,9 +56,9 @@ class Check {
             if(stristr($body, '>Consultas Limit')) {
                 return true;
             }else{
-                echo "\n\nna 59 - check\n\n\n";
-                print_r($res);
-                die;
+                // echo "\n\nna 59 - check\n\n\n";
+                // print_r($res);
+                // die;
                 return false;
             }
 

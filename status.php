@@ -23,18 +23,18 @@ if(isset($config)) {
 	$check = new Check();
 	$check->setUrl($url);
 	$check->setCookie($config['COOKIE_API']);
-	$res = $check->run();
-	if($res === true) {
+	$rr = $check->run();
+	if($rr === true) {
 		$res = [
-			'msg' => 'Online';
+			'msg' => 'Online'
 		];
-	}elseif($res === false) {
+	}elseif($rr === false) {
 		$res = [
-			'msg' => 'Off-line';
+			'msg' => 'Off-line'
 		];
 	}else {
 		$res = [
-			'msg' => 'erro indefinido, verificar.';
+			'msg' => 'erro indefinido, verificar.'
 		];
 	}
 }else {
