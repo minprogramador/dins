@@ -1,0 +1,20 @@
+{
+	"name": "Dins",
+	"type": "library",
+	"description": "Modulo dins, logar, check cookie, consultas.",
+	"license": "proprietary",
+	"authors": [
+		{
+			"name": "minprogramador",
+			"email": "minprogramador@gmail.com"
+		}
+	],
+	"require": {
+		"php": ">=7.0.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"Dins\\":"src/Dins/"
+		}
+	}
+}
