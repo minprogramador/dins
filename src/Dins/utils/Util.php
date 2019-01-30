@@ -107,8 +107,21 @@ class Util {
         $str = substr ( $str, 0, $leftLen );
         return $str;
     }
+    public static function arr2ini(array $a, array $parent = array()) {
+        $out = '';
+        foreach ($a as $k => $v) {
+            if (is_array($v)) {
+                $sec = array_merge((array) $parent, (array) $k);
+                $out .= '[' . join('.', $sec) . ']' . PHP_EOL;
+                $out .= arr2ini($v, $sec);
+            } else {
+                $out .= "$k=". '"'.$v.'"' . PHP_EOL;
+            }
+        }
+        return $out;
+    }
 
-    public function getCookies($get)
+    public static function getCookies($get)
     {
         preg_match_all('/Set-Cookie: (.*);/U',$get,$temp);
         $cookie = $temp[1];
