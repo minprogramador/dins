@@ -9,7 +9,6 @@ use Dins\facil\Logar;
 use Dins\facil\Cookie;
 use Dins\facil\Check;
 
-
 class Init {
 
     private $cookie;
@@ -26,12 +25,14 @@ class Init {
         
         $cookie = $this->cookie;
 
-        $cc    = new Cookie();
+        $cc = new Cookie();
 
         if(strlen($cookie) > 5) {
 
+            $config = $this->getInfo();
+
             $check = new Check();
-            $check->setUrl('http://www.consultefacil.org/Painel');
+            $check->setUrl($config['URL_API'].'Painel');
             $check->setCookie($cookie);
 
             $ver_cookie = $check->run();
@@ -46,12 +47,17 @@ class Init {
         return $ver_cookie;
     }
 
+    public function getInfo() {
+        $config = parse_ini_file(".env");
+        return $config;
+    }
+
     public function logar() {
 
         $cc    = new Cookie();
         $logar = new Logar();
 
-        $config = parse_ini_file(".env");
+        $config = $this->getInfo();
         
         $logar->setUrl($config['URL_API']);
         $logar->setUsuario($config['USER_API']);
