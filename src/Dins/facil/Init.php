@@ -1,0 +1,92 @@
+<?php
+
+namespace Dins\facil;
+
+use Dins\utils\Curl;
+use Dins\utils\Util;
+
+use Dins\facil\Logar;
+use Dins\facil\Cookie;
+use Dins\facil\Check;
+
+
+class Init {
+
+    private $cookie;
+
+    public function setCookie($cookie) {
+        $this->cookie = $cookie;
+    }
+
+    public function getCookie() {
+        return $this->cookie;
+    }
+
+    public function check() {
+        
+        $cookie = $this->cookie;
+
+        $cc    = new Cookie();
+
+        if(strlen($cookie) > 5) {
+
+            $check = new Check();
+            $check->setUrl('http://www.consultefacil.org/Painel');
+            $check->setCookie($cookie);
+
+            $ver_cookie = $check->run();
+            if($ver_cookie === false) {
+                $cc->del();
+            }
+        }else{
+
+            $ver_cookie = false;
+        }
+
+        return $ver_cookie;
+    }
+
+    public function logar() {
+
+        $cc    = new Cookie();
+        $logar = new Logar();
+
+        $config = parse_ini_file(".env");
+        
+        $logar->setUrl($config['URL_API']);
+        $logar->setUsuario($config['USER_API']);
+        $logar->setSenha($config['PASS_API']);
+
+        $cookie = $logar->run();
+
+        if($cookie === false) {
+            $cc->setCookie('');
+        }else{
+            $cc->setCookie($cookie);        
+        }
+        
+        $cc->save();
+        return $cookie;
+    }
+
+    public function run() {
+
+        $cc     = new Cookie();
+        $cookie = $cc->find();
+
+        if(strlen($cookie) > 5) {
+            $this->setCookie($cookie);
+            $check = $this->check();
+        }else{
+            $check = false;
+        }
+
+        if($check === false) {
+            $cookie = $this->logar();
+        }
+
+        return $cookie;
+
+    }
+}
+

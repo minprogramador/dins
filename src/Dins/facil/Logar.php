@@ -63,15 +63,15 @@ class Logar {
         $headers = $res['headers'][0];
         if(stristr($headers, 'cation: ./Painel')) {
             $cookies = Util::getCookies($headers);
-            echo $cookies . PHP_EOL;
-            echo $this->url . 'Painel' . PHP_EOL;
+  //          echo $cookies . PHP_EOL;
+    //        echo $this->url . 'Painel' . PHP_EOL;
 
             $curl = new Curl();
             $curl->setTimeout(10);
             $curl->setCookie($cookies);
             $curl->add($this->url . 'Painel', $cookies, null, $proxy);
             $res1 = $curl->run();
-            echo "na 72\n";
+//            echo "na 72\n";
            // print_r($res1);
             return $cookies;
         } else {
@@ -81,37 +81,4 @@ class Logar {
     }
 
 }
-
-
-
-        // $config = parse_ini_file(".env");
-
-        // if($urlpath) { $config['url_path'] = $urlpath; }
-        // if($api_cpf) { $config['api_cpf'] = $api_cpf; }
-        // if($proxy) { $config['proxy'] = $proxy; }
-        // if($debug) { $config['debug'] = $debug; }
-        // if($ip_debug) { $config['ip_debug'] = $ip_debug; }
-        // if($status)  { $config['status'] = $status; }
-        // if($timeout) { $config['timeout'] = $timeout; }
-
-        // $config = arr2ini($config);
-
-        // $fp = fopen('.env', 'w');
-        // fwrite($fp, $config);
-        // fclose($fp);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

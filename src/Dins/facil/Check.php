@@ -56,7 +56,7 @@ class Check {
             if(stristr($body, '>Consultas Limit')) {
                 return true;
             }else{
-                echo "\n\nna 54\n\n\n";
+                echo "\n\nna 59 - check\n\n\n";
                 print_r($res);
                 die;
                 return false;
