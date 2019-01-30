@@ -57,16 +57,26 @@ class Logar {
             'usuario' => $this->usuario,
             'senha' => $this->senha
         ];
-
         $curl->add($this->url, null, http_build_query($post), $proxy);
         $res = $curl->run();
+
         $headers = $res['headers'][0];
         if(stristr($headers, 'cation: ./Painel')) {
-            return Util::getCookies($headers);
+            $cookies = Util::getCookies($headers);
+            echo $cookies . PHP_EOL;
+            echo $this->url . 'Painel' . PHP_EOL;
+
+            $curl = new Curl();
+            $curl->setTimeout(10);
+            $curl->setCookie($cookies);
+            $curl->add($this->url . 'Painel', $cookies, null, $proxy);
+            $res1 = $curl->run();
+            echo "na 72\n";
+           // print_r($res1);
+            return $cookies;
         } else {
-
-            print_r($res);
-
+            return false;
+            //print_r($res);
         }
     }
 
