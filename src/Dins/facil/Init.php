@@ -9,6 +9,9 @@ use Dins\facil\Logar;
 use Dins\facil\Cookie;
 use Dins\facil\Check;
 
+use Dins\facil\Lock;
+
+
 class Init {
 
     private $cookie;
@@ -81,6 +84,12 @@ class Init {
 
     public function run() {
 
+        $lock = new Lock();
+        if($lock->check() == 1) {
+            sleep(2);
+            return run();
+        }
+        
         $cc     = new Cookie();
         $cookie = $cc->find();
 

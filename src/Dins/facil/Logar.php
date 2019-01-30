@@ -2,6 +2,7 @@
 
 namespace Dins\facil;
 
+use Dins\facil\Check;
 use Dins\utils\Curl;
 use Dins\utils\Util;
 use Dins\facil\Lock;
@@ -51,10 +52,23 @@ class Logar {
             
         $lock = new Lock();
         if($lock->check() == 1) {
-            return 9;
+            sleep(2);
+            return $this->run();
+            //return 9;
         }else{
             $lock->lock();
         }
+
+        $config = parse_ini_file(".env");
+        $check  = new Check();
+        $check->setUrl($config['URL_API'] . 'Painel');
+        $check->setCookie($config['COOKIE_API']);
+        $res = $check->run();
+        if($res === true) {
+            $lock->unlock();            
+            return $config['COOKIE_API'];
+        }
+
 
         if(!stristr($this->url, '.')){
             return "url invalida";
