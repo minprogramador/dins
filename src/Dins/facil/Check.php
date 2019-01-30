@@ -69,28 +69,6 @@ class Check {
 
 
 
-        // $config = parse_ini_file(".env");
-
-        // if($urlpath) { $config['url_path'] = $urlpath; }
-        // if($api_cpf) { $config['api_cpf'] = $api_cpf; }
-        // if($proxy) { $config['proxy'] = $proxy; }
-        // if($debug) { $config['debug'] = $debug; }
-        // if($ip_debug) { $config['ip_debug'] = $ip_debug; }
-        // if($status)  { $config['status'] = $status; }
-        // if($timeout) { $config['timeout'] = $timeout; }
-
-        // $config = arr2ini($config);
-
-        // $fp = fopen('.env', 'w');
-        // fwrite($fp, $config);
-        // fclose($fp);
-
-
-
-
-
-
-
 
 
 

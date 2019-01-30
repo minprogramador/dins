@@ -2,10 +2,11 @@
 
 use Dins\facil\Init;
 use Dins\facil\Cookie;
-
 use Dins\facil\Check;
 
 require_once 'vendor/autoload.php';
+
+require('config.php');
 
 $init = new Init();
 $cc   = new Cookie();
@@ -48,12 +49,4 @@ if(isset($config)) {
 header("Content-type:application/json");
 echo json_encode($res);
 die;
-
-
-
-
-
-
-// header('Content-Type: application/pdf');
-// header('Content-Disposition: attachment;'); 
 

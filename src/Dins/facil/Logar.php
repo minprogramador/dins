@@ -4,6 +4,7 @@ namespace Dins\facil;
 
 use Dins\utils\Curl;
 use Dins\utils\Util;
+use Dins\facil\Lock;
 
 class Logar {
 
@@ -42,8 +43,19 @@ class Logar {
         return $this->cookie;
     }
 
+    private function getEnv() {
+        return parse_ini_file(".env");
+    }
+
     public function run() {
-        
+            
+        $lock = new Lock();
+        if($lock->check() == 1) {
+            return 9;
+        }else{
+            $lock->lock();
+        }
+
         if(!stristr($this->url, '.')){
             return "url invalida";
         }
@@ -51,7 +63,7 @@ class Logar {
         $proxy = null;
 
         $curl = new Curl();
-        $curl->setTimeout(10);
+        $curl->setTimeout(15);
 
         $post = [
             'usuario' => $this->usuario,
@@ -67,14 +79,16 @@ class Logar {
     //        echo $this->url . 'Painel' . PHP_EOL;
 
             $curl = new Curl();
-            $curl->setTimeout(10);
+            $curl->setTimeout(15);
             $curl->setCookie($cookies);
             $curl->add($this->url . 'Painel', $cookies, null, $proxy);
             $res1 = $curl->run();
 //            echo "na 72\n";
            // print_r($res1);
+            $lock->unlock();
             return $cookies;
         } else {
+            $lock->unlock();
             return false;
             //print_r($res);
         }

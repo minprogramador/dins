@@ -6,11 +6,9 @@ use Dins\facil\Consultar;
 
 require_once 'vendor/autoload.php';
 
-$tokenok = 'demonio';
+require('config.php');
 
-if(isset($_REQUEST['nb']) and isset($_REQUEST['token'])) {
-	if($_REQUEST['token'] != $tokenok){ die(':('); }
-
+if(isset($_REQUEST['nb'])) {
 	$nb = $_REQUEST['nb'];
 	if(strlen($nb) < 2) { die(':('); }
 }else{
@@ -86,9 +84,4 @@ header("Content-type:application/json");
 echo json_encode($res);
 die;
 
-
-
-
-// header('Content-Type: application/pdf');
-// header('Content-Disposition: attachment;'); 
 

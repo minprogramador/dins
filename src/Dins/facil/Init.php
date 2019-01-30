@@ -64,6 +64,10 @@ class Init {
         $logar->setSenha($config['PASS_API']);
 
         $cookie = $logar->run();
+        if($cookie == 9) {
+            sleep(5);
+            return logar();
+        }
 
         if($cookie === false) {
             $cc->setCookie('');
