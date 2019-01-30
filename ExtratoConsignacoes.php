@@ -2,14 +2,23 @@
 
 use Dins\facil\Init;
 use Dins\facil\Cookie;
-
 use Dins\facil\Consultar;
 
 require_once 'vendor/autoload.php';
 
+$tokenok = 'demonio';
+
+if(isset($_REQUEST['nb']) and isset($_REQUEST['token'])) {
+	if($_REQUEST['token'] != $tokenok){ die(':('); }
+
+	$nb = $_REQUEST['nb'];
+	if(strlen($nb) < 2) { die(':('); }
+}else{
+	die(':(');
+}
+
 $init = new Init();
 $cc   = new Cookie();
-
 $check_sessao = $init->run();
 
 if(stristr($check_sessao, 'PHPSESSID')) {
@@ -23,6 +32,7 @@ if(isset($config)) {
 	$consult = new Consultar();
 	$consult->setUrl($url);
 	$consult->setCookie($config['COOKIE_API']);
+	$consult->setNb($nb);
 	$res = $consult->run();
 
 	if($res == 5) {
@@ -72,8 +82,9 @@ if(isset($config)) {
 	];
 }
 
-
-
+header("Content-type:application/json");
+echo json_encode($res);
+die;
 
 
 
