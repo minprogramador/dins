@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-include 'vendor/autoload.php';
+include '../vendor/autoload.php';
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -15,13 +15,13 @@ $request = Zend\Diactoros\ServerRequestFactory::fromGlobals(
 
 $router = new League\Route\Router;
 
-$router->map('GET', '/', 'Dins\indexController::run');
+$router->map('GET', '/', 'Controllers\indexController::run');
 
-$router->map('GET', '/status', 'Dins\indexController::status');
+$router->map('GET', '/status', 'Controllers\indexController::status');
 
-$router->map('GET', '/consultar', 'Dins\indexController::run');
+$router->map('GET', '/consultar', 'Controllers\indexController::run');
 
-$router->map('GET', '/consultar/{n}', 'Dins\consultarController::run');
+$router->map('GET', '/consultar/{n}', 'Controllers\consultarController::run');
 
 //run
 $response = $router->dispatch($request);

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Dins;
+namespace Controllers;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -31,7 +31,7 @@ class indexController
 		$check_sessao = $init->run();
 
 		if(stristr($check_sessao, 'PHPSESSID')) {
-			$config = parse_ini_file(".env");
+			$config = parse_ini_file("../.env");
 		}
 
 		if(isset($config)) {

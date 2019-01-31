@@ -25,14 +25,14 @@ class Cookie {
     }
 
     private function getEnv() {
-        return parse_ini_file(".env");
+        return parse_ini_file("../.env");
     }
 
     public function del() {
         $config = $this->getEnv();
         $config['COOKIE_API'] = "";
         $config1 = Util::arr2ini($config);
-        $fp = fopen('.env', 'w');
+        $fp = fopen('../.env', 'w');
         fwrite($fp, $config1);
         fclose($fp);
     }
@@ -41,7 +41,7 @@ class Cookie {
         $config = $this->getEnv();
         $config['COOKIE_API'] = $this->cookie;
         $config1 = Util::arr2ini($config);
-        $fp = fopen('.env', 'w');
+        $fp = fopen('../.env', 'w');
         fwrite($fp, $config1);
         fclose($fp);
     }

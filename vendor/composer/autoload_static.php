@@ -46,6 +46,10 @@ class ComposerStaticInit07327c7ece32297bdbdd9859e2600e9d
         array (
             'Dins\\' => 5,
         ),
+        'C' => 
+        array (
+            'Controllers\\' => 12,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -86,6 +90,10 @@ class ComposerStaticInit07327c7ece32297bdbdd9859e2600e9d
         'Dins\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/Dins',
+        ),
+        'Controllers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Controllers',
         ),
     );
 

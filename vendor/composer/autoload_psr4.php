@@ -15,4 +15,5 @@ return array(
     'Http\\Factory\\Diactoros\\' => array($vendorDir . '/http-interop/http-factory-diactoros/src'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
     'Dins\\' => array($baseDir . '/src/Dins'),
+    'Controllers\\' => array($baseDir . '/Controllers'),
 );

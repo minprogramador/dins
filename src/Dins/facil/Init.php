@@ -51,7 +51,7 @@ class Init {
     }
 
     public function getInfo() {
-        $config = parse_ini_file(".env");
+        $config = parse_ini_file("../.env");
         return $config;
     }
 

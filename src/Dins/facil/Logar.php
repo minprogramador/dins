@@ -45,7 +45,7 @@ class Logar {
     }
 
     private function getEnv() {
-        return parse_ini_file(".env");
+        return parse_ini_file("../.env");
     }
 
     public function run() {
@@ -59,7 +59,7 @@ class Logar {
             $lock->lock();
         }
 
-        $config = parse_ini_file(".env");
+        $config = parse_ini_file("../.env");
         $check  = new Check();
         $check->setUrl($config['URL_API'] . 'Painel');
         $check->setCookie($config['COOKIE_API']);

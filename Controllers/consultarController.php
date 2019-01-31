@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Dins;
+namespace Controllers;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
