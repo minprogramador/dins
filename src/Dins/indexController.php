@@ -19,7 +19,7 @@ class indexController
     public function run(ServerRequestInterface $request) : ResponseInterface {
 	    $response = new Response;
 
-	    $response->getBody()->write(json_encode(['message' => 'hey']));
+	    $response->getBody()->write(json_encode(['msg' => ':(']));
 	    return $response;
 	}
 
