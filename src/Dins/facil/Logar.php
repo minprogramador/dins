@@ -49,6 +49,10 @@ class Logar {
     }
 
     public function run() {
+
+        if(!stristr($this->url, '.')){
+            return "url invalida";
+        }
             
         $lock = new Lock();
         if($lock->check() == 1) {
@@ -59,7 +63,9 @@ class Logar {
             $lock->lock();
         }
 
+
         $config = parse_ini_file("../.env");
+
         $check  = new Check();
         $check->setUrl($config['URL_API'] . 'Painel');
         $check->setCookie($config['COOKIE_API']);
@@ -67,11 +73,6 @@ class Logar {
         if($res === true) {
             $lock->unlock();            
             return $config['COOKIE_API'];
-        }
-
-
-        if(!stristr($this->url, '.')){
-            return "url invalida";
         }
 
         $proxy = null;
@@ -103,8 +104,8 @@ class Logar {
             return $cookies;
         } else {
             $lock->unlock();
+            sleep(10);
             return false;
-            //print_r($res);
         }
     }
 

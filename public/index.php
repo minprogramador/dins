@@ -23,6 +23,9 @@ $router->map('GET', '/consultar', 'Controllers\indexController::run');
 
 $router->map('GET', '/consultar/{n}', 'Controllers\consultarController::run');
 
+$router->map('GET', '/consulta/Extrato/{n}', 'Controllers\consultarController::extrato');
+
+
 //run
 $response = $router->dispatch($request);
 $server->emit($response);

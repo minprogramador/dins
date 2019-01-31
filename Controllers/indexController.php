@@ -30,8 +30,10 @@ class indexController
 
 		$check_sessao = $init->run();
 
-		if(stristr($check_sessao, 'PHPSESSID')) {
-			$config = parse_ini_file("../.env");
+		if ($check_sessao !== false) {
+			if(stristr($check_sessao, 'PHPSESSID')) {
+				$config = parse_ini_file("../.env");
+			}
 		}
 
 		if(isset($config)) {
@@ -56,7 +58,7 @@ class indexController
 				];
 			}
 		}else {
-			$cc->del();
+		//	$cc->del();
 
 			$res = [
 				'msg' => "relogar, sem sessao."

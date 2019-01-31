@@ -61,7 +61,7 @@ class Init {
         $logar = new Logar();
 
         $config = $this->getInfo();
-        
+
         $logar->setUrl($config['URL_API']);
         $logar->setUsuario($config['USER_API']);
         $logar->setSenha($config['PASS_API']);
@@ -83,11 +83,10 @@ class Init {
     }
 
     public function run() {
-
         $lock = new Lock();
         if($lock->check() == 1) {
             sleep(2);
-            return run();
+            return $this->run();
         }
         
         $cc     = new Cookie();
