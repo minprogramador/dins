@@ -19,6 +19,10 @@ class ComposerStaticInit07327c7ece32297bdbdd9859e2600e9d
     );
 
     public static $prefixLengthsPsr4 = array (
+        'c' => 
+        array (
+            'controllers\\' => 12,
+        ),
         'Z' => 
         array (
             'Zend\\Diactoros\\' => 15,
@@ -46,13 +50,13 @@ class ComposerStaticInit07327c7ece32297bdbdd9859e2600e9d
         array (
             'Dins\\' => 5,
         ),
-        'C' => 
-        array (
-            'Controllers\\' => 12,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'controllers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/controllers',
+        ),
         'Zend\\Diactoros\\' => 
         array (
             0 => __DIR__ . '/..' . '/zendframework/zend-diactoros/src',
@@ -90,10 +94,6 @@ class ComposerStaticInit07327c7ece32297bdbdd9859e2600e9d
         'Dins\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/Dins',
-        ),
-        'Controllers\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/Controllers',
         ),
     );
 

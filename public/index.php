@@ -15,15 +15,15 @@ $request = Zend\Diactoros\ServerRequestFactory::fromGlobals(
 
 $router = new League\Route\Router;
 
-$router->map('GET', '/', 'Controllers\indexController::run');
+$router->map('GET', '/', 'controllers\indexController::run');
 
-$router->map('GET', '/status', 'Controllers\indexController::status');
+$router->map('GET', '/status', 'controllers\indexController::status');
 
-$router->map('GET', '/consultar', 'Controllers\indexController::run');
+$router->map('GET', '/consultar', 'controllers\indexController::run');
 
-$router->map('GET', '/consultar/{n}', 'Controllers\consultarController::run');
+$router->map('GET', '/consultar/{n}', 'controllers\consultarController::run');
 
-$router->map('GET', '/consulta/Extrato/{n}', 'Controllers\consultarController::extrato');
+$router->map('GET', '/consultar/extrato/{n}', 'controllers\consultarController::extrato');
 
 
 //run

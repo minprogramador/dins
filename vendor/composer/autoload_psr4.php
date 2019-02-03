@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'controllers\\' => array($baseDir . '/controllers'),
     'Zend\\Diactoros\\' => array($vendorDir . '/zendframework/zend-diactoros/src'),
     'Psr\\Http\\Server\\' => array($vendorDir . '/psr/http-server-handler/src', $vendorDir . '/psr/http-server-middleware/src'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-factory/src', $vendorDir . '/psr/http-message/src'),
@@ -15,5 +16,4 @@ return array(
     'Http\\Factory\\Diactoros\\' => array($vendorDir . '/http-interop/http-factory-diactoros/src'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
     'Dins\\' => array($baseDir . '/src/Dins'),
-    'Controllers\\' => array($baseDir . '/Controllers'),
 );

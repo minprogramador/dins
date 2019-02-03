@@ -47,6 +47,7 @@ class Consultar {
         $post = "enviarnb={$nb}&pesquisar=CONSULTAR";
         $curl = new Curl();
         $curl->setTimeout(20);
+
         $curl->add($this->url, $this->cookie, $post, $proxy);
         $res = $curl->run();
 
@@ -56,6 +57,8 @@ class Consultar {
 
             return false;
 
+        } elseif(stristr($headers, '/Servicos/?limite')) {
+            return 8;
         } else {
 
             $body = $res['body'][0];
@@ -71,7 +74,7 @@ class Consultar {
                 return $body;
 
             }else{
-                return 8;
+               return 8;
                 // echo PHP_EOL . $post . PHP_EOL;
                 // echo $this->url . PHP_EOL;
                 // echo $this->cookie . PHP_EOL;
